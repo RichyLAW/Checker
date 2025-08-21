@@ -2,7 +2,7 @@
 <p align="center">A lightweight Checklist Application</p>
 <p align="center"><img src="https://github.com/RichyLAW/Checker/blob/main/Checker_image_v1.png" width="50%"></p>
 
-### 🚀 Features
+### Features
 - Easy to use
 - Move Task
 - Edit / Delete Task
