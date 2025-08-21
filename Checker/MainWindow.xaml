@@ -1,0 +1,238 @@
+﻿<Window x:Class="Checker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:Checker"
+        Title="Checker_V8.3" Height="400" Width="650"
+        Background="#111323">
+    <Window.Resources>
+        <local:DueDateBrushConverter x:Key="TodayBrushConverter"/>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Grid Background="#16192D">
+                            <Track Name="PART_Track" 
+                           IsDirectionReversed="true"
+                           Focusable="false">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="ScrollBar.LineUpCommand"
+                                          Style="{x:Null}" 
+                                          IsTabStop="False" 
+                                          Height="0"/>
+                                </Track.DecreaseRepeatButton>
+
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Border 
+                                            Background="#262C4F" 
+                                            CornerRadius="10"/>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="ScrollBar.LineDownCommand"
+                                          Style="{x:Null}" 
+                                          IsTabStop="False" 
+                                          Height="0"/>
+                                </Track.IncreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ScrollViewer">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollViewer">
+                        <Grid Background="#16192D">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Content -->
+                            <ScrollContentPresenter Grid.Row="0" Grid.Column="0" />
+
+                            <!-- Vertical Scrollbar -->
+                            <ScrollBar Name="PART_VerticalScrollBar"
+                               Grid.Row="0" Grid.Column="1"
+                               Orientation="Vertical"
+                               Background="#16192D"
+                               Maximum="{TemplateBinding ScrollableHeight}"
+                               Value="{TemplateBinding VerticalOffset}"
+                               ViewportSize="{TemplateBinding ViewportHeight}"
+                               Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
+
+                            <!-- Horizontal Scrollbar -->
+                            <ScrollBar Name="PART_HorizontalScrollBar"
+                               Grid.Row="1" Grid.Column="0"
+                               Orientation="Horizontal"
+                               Background="#16192D"
+                               Maximum="{TemplateBinding ScrollableWidth}"
+                               Value="{TemplateBinding HorizontalOffset}"
+                               ViewportSize="{TemplateBinding ViewportWidth}"
+                               Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
+
+                            <!-- Das Eck unten rechts / the corner thing down right  -->
+                            <Rectangle Grid.Row="1" Grid.Column="1"
+                               Fill="#16192D" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Eingabezeile / InputLine -->
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="TaskTextBox"
+         Width="200"
+         Margin="5"
+         Foreground="LawnGreen"
+         Background="Black"
+         FontWeight="Bold"
+         FontSize="14">
+                <TextBox.Effect>
+                    <DropShadowEffect Color="LawnGreen"
+                          BlurRadius="12"
+                          ShadowDepth="0"
+                          Opacity="0.9"/>
+                </TextBox.Effect>
+            </TextBox>
+
+            <DatePicker x:Name="TaskDatePicker"
+                        Margin="0,0,5,0"
+                        SelectedDate="{x:Static sys:DateTime.Today}" Foreground="White" BorderBrush="{x:Null}" RenderTransformOrigin="0.615,0.474" />
+            <Button Content="ADD"
+                    Click="AddTask_Click"
+                    Width="100" BorderBrush="LawnGreen" Foreground="LawnGreen" Background="Transparent"  />
+            <Button Content="SORT" Click="SortByDate_Click" Width="100" Margin="8,0,0,0" BorderBrush="Yellow" Foreground="Yellow" Background="Transparent"/>
+        </StackPanel>
+
+        <!-- Liste / List -->
+        <ListBox x:Name="TaskList"
+                 Grid.Row="1"
+                 Margin="0,10,0,0"
+                 Background="Transparent"
+                 BorderBrush="LightGray"
+                 Foreground="White"
+                 FontSize="14">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}"
+                              Margin="0,0,8,0"
+                              Checked="CheckBox_Checked"
+                              Unchecked="CheckBox_Unchecked"
+                              Background="{x:Null}"
+                              BorderBrush="LightGray">   
+                            <CheckBox.Resources>
+                                <Style TargetType="Path">
+                                    <Setter Property="Stroke" Value="Red"/>
+                                </Style>
+                            </CheckBox.Resources>
+                        </CheckBox>
+
+                        <TextBlock Text="{Binding Title}" Margin="0,0,8,0">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="LawnGreen"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="LawnGreen" BlurRadius="15" ShadowDepth="0" Opacity="1"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsDone}" Value="True">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                            <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="Red" BlurRadius="15" ShadowDepth="0" Opacity="1"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock Text="{Binding DueDate, StringFormat= (bis {0:dd.MM.yyyy})}"
+           Margin="0,0,8,0">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="LightGray"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0" Opacity="1"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <!-- Heute / Today -->
+                                        <DataTrigger Binding="{Binding DueDate, Converter={StaticResource TodayBrushConverter}}" Value="White">
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="White" BlurRadius="10" ShadowDepth="0" Opacity="1"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+
+                                        <!-- Morgen / Tomorrow -->
+                                        <DataTrigger Binding="{Binding DueDate, Converter={StaticResource TodayBrushConverter}}" Value="Violet">
+                                            <Setter Property="Foreground" Value="Violet"/>
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="Violet" BlurRadius="10" ShadowDepth="0" Opacity="1"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+
+                                        <!-- Vergangen / Past-->
+                                        <DataTrigger Binding="{Binding DueDate, Converter={StaticResource TodayBrushConverter}}" Value="Red">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="Red" BlurRadius="10" ShadowDepth="0" Opacity="1"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+
+
+                        <Button Content="↑" Width="25" Margin="5,0,0,0"
+                    Click="MoveUp_Click" BorderBrush="LightGray" Foreground="LightGray" Background="Transparent"/>
+                        <Button Content="↓" Width="25" Margin="2,0,0,0"
+                    Click="MoveDown_Click" BorderBrush="LightGray" Foreground="LightGray" Background="Transparent"/>
+                        <Button Content="🖉" Click="EditTask_Click" Width="25" Margin="4,0,0,0" BorderBrush="LightGray" Foreground="LightGray" Background="Transparent" FontWeight="Bold"/>
+                        <Button Content="🗑️" Click="DeleteTask_Click" Width="25" Margin="10,0,0,0" BorderBrush="LightGray" Foreground="LightGray" Background="Transparent"/>
+                        <!--alt: ✎🗑️ - 🖉 -->
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
