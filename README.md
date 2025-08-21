@@ -26,3 +26,8 @@ The date changes color according to the due date of a task
 - Violet -> Tomorrow
 - Gray -> Future days
 - Red -> Past days
+
+---
+
+## FAQ
+*Dose it work on Linux or mac?* **The Application was built using wpf which is only supported by windows.**
