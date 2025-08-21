@@ -8,6 +8,7 @@
 - Edit / Delete Task
 - 3 Diffrent time colors
 - Sort option
+- The Application is rederd in top of everthing
 
 ---
 
@@ -20,7 +21,8 @@ To move a task you can use the arrows or the sort button. The Sort button sorts 
 When you have finished a Task you can check it. A Checked Task becomes red while a unfinished task is green. <br>
 
 ## Date
-- White Today
-- Purple Tomorrow
-- Gray Future days
-- Red Past days
+The date changes color according to the due date of a task
+- White -> Today
+- Violet -> Tomorrow
+- Gray -> Future days
+- Red -> Past days
