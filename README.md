@@ -30,13 +30,17 @@ The date changes color according to the due date of a task
 ---
 
 ## RoadMap
-
+```markdown
 ```mermaid
-flowchart TD
-    A[Improved Editing] --> B[Better UI]
-    A --> C[Drag and Drop mechanics]
-    D[Linux & Mac compatibility] --> B
-    D --> C
+gantt
+    title Projekt Roadmap
+    dateFormat  YYYY-MM-DD
+    section Core Features
+    Improved Editing        :done,    des1, 2025-01-01,2025-02-01
+    Better UI               :active,  des2, 2025-02-01,2025-03-01
+    Drag and Drop mechanics :         des3, 2025-03-01,2025-04-01
+    section Compatibility
+    Linux & Mac             :         des4, 2025-02-15,2025-04-15
 
 
 ---
