@@ -29,12 +29,13 @@ The date changes color according to the due date of a task
 
 ---
 
-## RoadMapa
-        imporved Edeting    Linux & Mac compatibility
-                |                      |
---------+-------+-------------+--------+-------->
-        |                     |
-    Better UI      Drag and Drop mechanics
+## RoadMap
+
+```mermaid
+flowchart TD
+    A[Improved Editing] --> C[Better UI]
+    B[Linux & Mac Compatibility] --> D[Drag & Drop Mechanics]
+
 
 ---
 
