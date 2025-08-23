@@ -31,10 +31,11 @@ The date changes color according to the due date of a task
 
 ## RoadMap
 
-```mermaid
-flowchart TD
-    A[Improved Editing] --> C[Better UI]
-    B[Linux & Mac Compatibility] --> D[Drag & Drop Mechanics]
+Improved Editing         Linux & Mac compatibility
+        |                          |
+--------+-------------+------------+-------->
+        |                          |
+   Better UI             Drag & Drop mechanics
 
 
 ---
