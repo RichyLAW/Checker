@@ -29,7 +29,7 @@ The date changes color according to the due date of a task
 
 ---
 
-## RoadMap
+## RoadMapa
         imporved Edeting    Linux & Mac compatibility
                 |                      |
 --------+-------+-------------+--------+-------->
