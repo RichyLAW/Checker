@@ -29,5 +29,13 @@ The date changes color according to the due date of a task
 
 ---
 
+## RoadMap
+- Imporved Edeting 
+- Linux & Mac compatibility 
+- Better UI 
+- Drag and Drop mechanics
+  
+---
+
 ## FAQ
 *Dose it work on Linux or mac?* **The Application was built using wpf which is only supported by windows.**
