@@ -23,6 +23,8 @@ namespace Checker
                     return "White";
                 if (due == today.AddDays(1)) // Morgen / Tomorrow
                     return "Violet";
+                if (due < today.AddDays(7)) // Die woche / this week
+                    return "Blue";
             }
 
             return "Gray"; // Standard

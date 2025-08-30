@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Checker"
-        Title="Checker_V8.3" Height="400" Width="650"
+        Title="Checker_V9" Height="400" Width="650"
         Background="#111323">
     <Window.Resources>
         <local:DueDateBrushConverter x:Key="TodayBrushConverter"/>
@@ -144,7 +144,7 @@
                               Checked="CheckBox_Checked"
                               Unchecked="CheckBox_Unchecked"
                               Background="{x:Null}"
-                              BorderBrush="LightGray">   
+                              BorderBrush="LightGray">
                             <CheckBox.Resources>
                                 <Style TargetType="Path">
                                     <Setter Property="Stroke" Value="Red"/>
@@ -203,6 +203,16 @@
                                             <Setter Property="Effect">
                                                 <Setter.Value>
                                                     <DropShadowEffect Color="Violet" BlurRadius="10" ShadowDepth="0" Opacity="1"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+
+                                        <!-- Die woche / this week -->
+                                        <DataTrigger Binding="{Binding DueDate, Converter={StaticResource TodayBrushConverter}}" Value="Blue">
+                                            <Setter Property="Foreground" Value="LightSteelBlue"/>
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="LightSteelBlue" BlurRadius="10" ShadowDepth="0" Opacity="1"/>
                                                 </Setter.Value>
                                             </Setter>
                                         </DataTrigger>
