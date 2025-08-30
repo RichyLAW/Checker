@@ -25,6 +25,7 @@ The date changes color according to the due date of a task
 - White -> Today
 - Violet -> Tomorrow
 - Gray -> Future days
+- Blue -> A week
 - Red -> Past days
 
 ---
