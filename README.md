@@ -35,8 +35,13 @@ The date changes color according to the due date of a task
 - Linux & Mac compatibility 
 - Better UI 
 - Drag and Drop mechanics
-  
+
+## Under Process
+- Recoding it in using Avalonia UI (Win, Linux, Mac compatibility)
+- Redesigning the Application
+
 ---
 
 ## FAQ
 *Dose it work on Linux or mac?* **The Application was built using wpf which is only supported by windows.**
+*Is it a Virus* **No ;) If you don´t trust me check te source code**
