@@ -44,4 +44,5 @@ The date changes color according to the due date of a task
 
 ## FAQ
 *Dose it work on Linux or mac?* **The Application was built using wpf which is only supported by windows.**
+<br>
 *Is it a Virus* **No ;) If you don´t trust me check te source code**
