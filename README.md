@@ -48,4 +48,4 @@ The date changes color according to the due date of a task
 *Is it a Virus* **No ;) If you don´t trust me check te source code.**
 
 <h3>IMPORTANT</h3>
-If you want to find a bug or just give me an idea, feel free to contact me
+If you find some kind of bug or just want to give me an idea, feel free to contact me
