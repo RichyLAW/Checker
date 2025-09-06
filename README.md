@@ -39,6 +39,7 @@ The date changes color according to the due date of a task
 ## Under Process
 - Recoding it in using Avalonia UI (Win, Linux, Mac compatibility)
 - Redesigning the Application
+- Reconsider my life choices
 
 ---
 
