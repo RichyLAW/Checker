@@ -32,12 +32,11 @@ The date changes color according to the due date of a task
 
 ## RoadMap
 - Imporved Edeting 
-- Linux & Mac compatibility 
 - Better UI 
 - Drag and Drop mechanics
 
 ## Under Process
-- Recoding it in using Avalonia UI (Win, Linux, Mac compatibility)
+- Recoding it using not WPF because it kinda sucks
 - Redesigning the Application
 - Reconsider my life choices
 
